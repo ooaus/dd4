@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>互传</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+  <h3>互传功能</h3>
+  <h4>1. 生成二维码</h4>
+  <input type="text" id="qrText" placeholder="输入内容">
+  <button onclick="makeQR()">生成二维码</button>
+  <div id="qrcode"></div>
+  <h4>2. 输入IP访问</h4>
+  <input type="text" id="ipInput" placeholder="如 192.168.0.1:8080">
+  <button onclick="openIP()">打开</button>
+  <script>
+    function makeQR(){
+      let text=document.getElementById('qrText').value;
+      document.getElementById('qrcode').innerHTML="";
+      QRCode.toCanvas(document.createElement('canvas'), text, (err, canvas)=>{
+        if(!err) document.getElementById('qrcode').appendChild(canvas);
+      });
+    }
+    function openIP(){
+      let ip=document.getElementById('ipInput').value;
+      window.location.href="http://"+ip;
+    }
+  </script>
+  <br><a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
