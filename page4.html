@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>播放器</title>
+</head>
+<body>
+  <h3>播放器</h3>
+
+  <!-- 图片查看器 -->
+  <p>选择本地图片：</p>
+  <input type="file" accept="image/*" multiple onchange="loadImages(event)">
+  <br>
+  <img id="imgViewer" style="max-width:100%; display:block; margin-top:10px;">
+  <button onclick="nextImage()">下一张图片</button>
+
+  <!-- 视频播放器 -->
+  <p>选择本地视频：</p>
+  <input type="file" accept="video/*" multiple onchange="loadVideos(event)">
+  <br>
+  <video id="videoPlayer" controls style="max-width:100%;"></video>
+  <button onclick="nextVideo()">下一个视频</button>
+
+  <!-- 文档查看器 -->
+  <p>选择本地文档(PDF/TXT)：</p>
+  <input type="file" accept=".pdf,.txt" multiple onchange="loadDocs(event)">
+  <br>
+  <iframe id="docViewer" style="width:100%;height:300px; border:1px solid #ccc;"></iframe>
+  <button onclick="nextDoc()">下一个文档</button>
+
+  <!-- 音乐播放器 -->
+  <p>选择本地音乐：</p>
+  <input type="file" accept="audio/*" multiple onchange="loadMusic(event)">
+  <br>
+  <audio id="audioPlayer" controls></audio>
+  <button onclick="nextMusic()">下一首音乐</button>
+
+  <!-- JS 脚本 -->
+  <script>
+    let images = [], imgIndex = 0;
+    let videos = [], videoIndex = 0;
+    let docs = [], docIndex = 0;
+    let musics = [], musicIndex = 0;
+
+    function loadImages(e) {
+      images = Array.from(e.target.files);
+      imgIndex = 0;
+      if (images.length > 0) showImage();
+    }
+    function showImage() {
+      let url = URL.createObjectURL(images[imgIndex]);
+      document.getElementById("imgViewer").src = url;
+    }
+    function nextImage() {
+      if (images.length > 0) {
+        imgIndex = (imgIndex + 1) % images.length;
+        showImage();
+      }
+    }
+
+    function loadVideos(e) {
+      videos = Array.from(e.target.files);
+      videoIndex = 0;
+      if (videos.length > 0) showVideo();
+    }
+    function showVideo() {
+      let url = URL.createObjectURL(videos[videoIndex]);
+      document.getElementById("videoPlayer").src = url;
+    }
+    function nextVideo() {
+      if (videos.length > 0) {
+        videoIndex = (videoIndex + 1) % videos.length;
+        showVideo();
+      }
+    }
+
+    function loadDocs(e) {
+      docs = Array.from(e.target.files);
+      docIndex = 0;
+      if (docs.length > 0) showDoc();
+    }
+    function showDoc() {
+      let url = URL.createObjectURL(docs[docIndex]);
+      document.getElementById("docViewer").src = url;
+    }
+    function nextDoc() {
+      if (docs.length > 0) {
+        docIndex = (docIndex + 1) % docs.length;
+        showDoc();
+      }
+    }
+
+    function loadMusic(e) {
+      musics = Array.from(e.target.files);
+      musicIndex = 0;
+      if (musics.length > 0) showMusic();
+    }
+    function showMusic() {
+      let url = URL.createObjectURL(musics[musicIndex]);
+      document.getElementById("audioPlayer").src = url;
+    }
+    function nextMusic() {
+      if (musics.length > 0) {
+        musicIndex = (musicIndex + 1) % musics.length;
+        showMusic();
+      }
+    }
+  </script>
+
+  <br><br>
+  <a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
