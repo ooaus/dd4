@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>相机</title></head>
+<body>
+  <h3>相机</h3>
+  <input type="file" accept="image/*" capture="environment" onchange="showImg(event)">
+  <img id="photo" style="max-width:100%;margin-top:10px;">
+  <script>
+    function showImg(e) {
+      let file = e.target.files[0];
+      let url = URL.createObjectURL(file);
+      document.getElementById('photo').src = url;
+    }
+  </script>
+  <br><a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
