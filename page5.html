@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>扩展功能</title></head>
+<body>
+  <h3>扩展功能</h3>
+  <button onclick="openWeChat()">打开微信</button>
+  <button onclick="openBaidu()">进入百度</button>
+  <script>
+    function openWeChat(){ alert("需要APP环境才能调用微信"); }
+    function openBaidu(){ window.location.href = "https://www.baidu.com"; }
+  </script>
+  <br><a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
