@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>小游戏</title></head>
+<body>
+  <h3>小游戏：点击按钮得分</h3>
+  <p>得分：<span id="score">0</span></p>
+  <button onclick="addScore()">点我</button>
+  <script>
+    let score = 0;
+    function addScore() {
+      score++;
+      document.getElementById('score').innerText = score;
+    }
+  </script>
+  <br><a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
