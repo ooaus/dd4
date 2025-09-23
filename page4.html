@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>播放器</title></head>
+<body>
+  <h3>播放器</h3>
+  <p>选择本地音乐：</p>
+  <input type="file" accept="audio/*" onchange="loadMusic(event)">
+  <audio id="audio" controls></audio>
+  <script>
+    function loadMusic(e) {
+      let file = e.target.files[0];
+      let url = URL.createObjectURL(file);
+      document.getElementById('audio').src = url;
+    }
+  </script>
+  <br><a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
