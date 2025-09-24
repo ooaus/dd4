@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <!-- ✅ 这里允许整个页面缩放 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.5, maximum-scale=5.0">
+  <title>定位功能</title>
+</head>
+<body>
+  <h3>定位功能</h3>
+  <button onclick="getLocation()">获取定位</button>
+  <p id="pos"></p>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => document.getElementById('pos').innerText =
+            "纬度: " + pos.coords.latitude + " 经度: " + pos.coords.longitude,
+          err => alert("定位失败: " + err.message)
+        );
+      } else {
+        alert("浏览器不支持定位");
+      }
+    }
+  </script>
+
+  <br>
+  <a href="index.html"><button>返回首页</button></a>
+</body>
+</html>
